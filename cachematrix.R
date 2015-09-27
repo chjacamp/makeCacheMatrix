@@ -1,18 +1,15 @@
-## Put comments here that give an overall description of what your
-## functions do
+## The two functions here - makeCacheMatrix and cacheSolve - attempt to find
+## the inverse of a given matrix and cache the solution for future use. 
+##
+## makeCacheMatrix is a 'factory' function that stores a list of functions: 
+## 'set' stores a matrix
+## 'get' retrieves matrix
+## 'setinvmatrix' sets the solution for the matrix and informs cacheSolve to
+##  retrieve this matrix from cache.
+## 'getinvmatrix' retrieves the matrix cached by setinvmatrix.
+## 
+## Subset the object containing makeCacheMatrix and use 'set' to store a matrix.
 
-## makeCacheMatrix is a function that stores a list of functions: get, set,
-## getinvmatrix, and setinvmatrix.
-## When makeCacheMatrix is stored as an object, we can call each function
-## as a subset of that object.
-
-## We can *set* a matrix to be solved by cachesolve, we can *get* this
-## matrix back.
-
-## We can also save the solution directly using setinvmatrix. This
-## returns a value of m so that cacheSolve will use this existing
-## solution. Like set and get, we can pull the solution from this
-## function using getinvmatrix.
 
 makeCacheMatrix <- function(x = matrix()) {
   m <- NULL
@@ -27,11 +24,10 @@ makeCacheMatrix <- function(x = matrix()) {
 }
 
 
-## CacheSolve either 1) Returns the cached inverted/solved matrix or (else) 2) calculates
-## the inverted matrix with a solve function and passes the argument to setinvmatrix.
+## CacheSolve either 1) Returns the cached inverse matrix set by setinvmatrix
+## or (else) 2) calculates the inverse matrix with a solve function and 
+## passes the argument to setinvmatrix (to cache the solution).
 
-## By calling the function setinvmatrix, the next time cacheSolve is ran it will return
-## a cached matrix.
 
 cacheSolve <- function(x, ...) {
   m <- x$getinvmatrix() ##is there a invmatrix already stored?
