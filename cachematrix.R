@@ -8,7 +8,7 @@
 ##  retrieve this matrix from cache.
 ## 'getinvmatrix' retrieves the matrix cached by setinvmatrix.
 ## 
-## Subset the object containing makeCacheMatrix and use 'set' to store a matrix.
+## Subset the object containing makeCacheMatrix with 'set' to store a matrix.
 
 
 makeCacheMatrix <- function(x = matrix()) {
@@ -30,12 +30,12 @@ makeCacheMatrix <- function(x = matrix()) {
 
 
 cacheSolve <- function(x, ...) {
-  m <- x$getinvmatrix() ##is there a invmatrix already stored?
-        
-  if(!is.null(m)) {
+  m <- x$getinvmatrix() 
+  ##is there a invmatrix already stored?
+  if(!is.null(m)) { 
     message("Getting Inverse Matrix. Warning: Inverse matrix may have been 
             calculated in cacheSolve, or it was created by the function
-            setinvmatrix()")
+            setinvmatrix() and no calculation was done.")
     return(m)
   }
   ## Return a matrix that is the inverse of 'x'
